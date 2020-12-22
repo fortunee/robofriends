@@ -4,13 +4,18 @@ import './index.css';
 import Card from './Card';
 import reportWebVitals from './reportWebVitals';
 import 'tachyons';
+import { robots } from './robots';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Card />
-    <Card />
-    <Card />
-    <Card />
+    {robots.map((robot) =>
+      <Card
+        key={robot.id}
+        id={robot.id}
+        name={robot.name}
+        email={robot.email}
+      />
+    )}
   </React.StrictMode>,
   document.getElementById('root')
 );
