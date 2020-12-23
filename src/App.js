@@ -32,19 +32,17 @@ class App extends Component {
         .includes(this.state.searchField.toLocaleLowerCase())
     );
 
-    if (this.state.robots.length > 0) {
-      return (
-        <div className="tc">
-          <h1 className="f1">Robo friends</h1>
-          <SearchBox searchChange={this.onSearchChange} />
-          <Scroll>
-            <CardList robots={filteredRobots} />
-          </Scroll>
-        </div>
-      );
-    } else {
-      return <Loading />;
-    }
+    return !this.state.robots.length ? (
+      <Loading />
+    ) : (
+      <div className="tc">
+        <h1 className="f1">Robo friends</h1>
+        <SearchBox searchChange={this.onSearchChange} />
+        <Scroll>
+          <CardList robots={filteredRobots} />
+        </Scroll>
+      </div>
+    );
   }
 }
 
