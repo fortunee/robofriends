@@ -5,7 +5,10 @@ import { robots } from './robots';
 class App extends Component {
   render () {
     return (
-      <CardList robots={robots}/>
+      <div>
+        <h1>Robo friends</h1>
+        <CardList robots={robots}/>
+      </div>
     )
   }
 }
