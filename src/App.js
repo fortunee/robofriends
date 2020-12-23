@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import CardList from './CardList';
 import SearchBox from './SearchBox';
+import Loading from './Loading';
 import './App.css';
 
 class App extends Component {
@@ -28,13 +29,18 @@ class App extends Component {
         .toLocaleLowerCase()
         .includes(this.state.searchField.toLocaleLowerCase())
     );
-    return (
-      <div className="tc">
-        <h1 className="f1">Robo friends</h1>
-        <SearchBox searchChange={this.onSearchChange} />
-        <CardList robots={filteredRobots} />
-      </div>
-    );
+
+    if (this.state.robots.length > 0) {
+      return (
+        <div className="tc">
+          <h1 className="f1">Robo friends</h1>
+          <SearchBox searchChange={this.onSearchChange} />
+          <CardList robots={filteredRobots} />
+        </div>
+      );
+    } else {
+      return <Loading />;
+    }
   }
 }
 
