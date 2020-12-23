@@ -26,13 +26,13 @@ class App extends Component {
   };
 
   render() {
-    const filteredRobots = this.state.robots.filter((r) =>
-      r.name
-        .toLocaleLowerCase()
-        .includes(this.state.searchField.toLocaleLowerCase())
+    const { robots, searchField } = this.state;
+
+    const filteredRobots = robots.filter((r) =>
+      r.name.toLocaleLowerCase().includes(searchField.toLocaleLowerCase())
     );
 
-    return !this.state.robots.length ? (
+    return !robots.length ? (
       <Loading />
     ) : (
       <div className="tc">
