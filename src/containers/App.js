@@ -40,7 +40,7 @@ const App = (props) => {
 };
 
 const mapStateToProps = (state) => ({
-  searchField: state.searchField,
+  searchField: state.searchRobots.searchField,
 });
 
 const mapDispatchToProps = (dispatch) => ({
