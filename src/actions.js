@@ -1,3 +1,4 @@
+import { apiGetReq } from './api';
 import {
   CHANGE_SEARCH_FIELD,
   REQUEST_ROBOTS_PENDING,
@@ -13,9 +14,7 @@ export const setSearchField = (text) => ({
 export const requestRobots = () => async (dispatch) => {
   dispatch({ type: REQUEST_ROBOTS_PENDING });
   try {
-    const data = await fetch(
-      'https://jsonplaceholder.typicode.com/users'
-    ).then((res) => res.json());
+    const data = await apiGetReq('https://jsonplaceholder.typicode.com/users');
     dispatch({ type: REQUEST_ROBOTS_SUCCESS, payload: data });
   } catch (error) {
     dispatch({ type: REQUEST_ROBOTS_FAILED, payload: error });
