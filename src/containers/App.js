@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import CardList from '../components/CardList';
 import SearchBox from '../components/SearchBox';
 import Loading from '../components/Loading';
@@ -10,21 +10,22 @@ import { requestRobots, setSearchField } from '../actions';
 
 import './App.css';
 
-const App = (props) => {
-  const {
-    searchField,
-    onSearchChange,
-    onRequestRobots,
-    robots,
-    isPending,
-  } = props;
+const App = () => {
+  const dispatch = useDispatch();
+  const { searchField, robots, isPending } = useSelector((state) => ({
+    searchField: state.searchRobots.searchField,
+    robots: state.requestRobots.robots,
+    isPending: state.requestRobots.isPending,
+  }));
 
   useEffect(() => {
-    onRequestRobots();
-  }, [onRequestRobots]);
+    dispatch(requestRobots());
+  }, [dispatch]);
 
-  const filteredRobots = robots.filter((rob) =>
-    rob.name.toLocaleLowerCase().includes(searchField.toLocaleLowerCase())
+  const onSearchChange = (e) => dispatch(setSearchField(e.target.value));
+
+  const filteredRobots = robots.filter((robot) =>
+    robot.name.toLocaleLowerCase().includes(searchField.toLocaleLowerCase())
   );
 
   return isPending ? (
@@ -42,16 +43,4 @@ const App = (props) => {
   );
 };
 
-const mapStateToProps = (state) => ({
-  searchField: state.searchRobots.searchField,
-  isPending: state.requestRobots.isPending,
-  robots: state.requestRobots.robots,
-  error: state.requestRobots.error,
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  onSearchChange: (e) => dispatch(setSearchField(e.target.value)),
-  onRequestRobots: (e) => dispatch(requestRobots()),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;
