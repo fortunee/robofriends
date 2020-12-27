@@ -1,9 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import CardList from '../components/CardList';
-import SearchBox from '../components/SearchBox';
-import Loading from '../components/Loading';
-import Scroll from '../components/Scroll';
+import { CardList, Loading, SearchBox, Scroll } from '../components';
 import ErrorBoundary from './ErrorBoundary';
 
 import { requestRobots, setSearchField } from '../actions';
