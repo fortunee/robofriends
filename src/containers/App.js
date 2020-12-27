@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { CardList, Loading, SearchBox, Scroll } from '../components';
-import ErrorBoundary from './ErrorBoundary';
+import ErrorBoundary from '../components/ErrorBoundary';
 
 import { requestRobots, setSearchField } from '../actions';
 
