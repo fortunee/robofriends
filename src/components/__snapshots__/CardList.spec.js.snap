@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should render a CardList component 1`] = `
+"<Fragment>
+  <Card id={1} name=\\"Jane Doe\\" email=\\"jane@doe.random\\" />
+</Fragment>"
+`;
