@@ -14,10 +14,11 @@ import './App.css';
 
 const App = () => {
   const dispatch = useDispatch();
-  const { searchField, robots, isPending } = useSelector((state) => ({
+  const { searchField, robots, isPending, hasError } = useSelector((state) => ({
     searchField: state.searchRobots.searchField,
     robots: state.requestRobots.robots,
     isPending: state.requestRobots.isPending,
+    hasError: state.requestRobots.error,
   }));
 
   useEffect(() => {
@@ -30,7 +31,7 @@ const App = () => {
     robot.name.toLocaleLowerCase().includes(searchField.toLocaleLowerCase())
   );
 
-  return isPending ? (
+  return isPending || hasError ? (
     <Loading />
   ) : (
     <div className="tc">
