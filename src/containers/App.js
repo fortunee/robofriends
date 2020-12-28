@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import {
   CardList,
   ErrorBoundary,
+  Header,
   Loading,
   SearchBox,
   Scroll,
@@ -35,7 +36,7 @@ const App = () => {
     <Loading />
   ) : (
     <div className="tc">
-      <h1 className="f1">Robo friends</h1>
+      <Header />
       <SearchBox searchChange={onSearchChange} />
       <Scroll>
         <ErrorBoundary>
