@@ -1,6 +1,8 @@
 import { shallow } from 'enzyme';
+import React from 'react';
+
 import Card from './Card';
 
-it('Should have a Card component', () => {
-  expect(shallow(<Card />).length).toEqual(1);
+it('Should render a Card component', () => {
+  expect(shallow(<Card />).debug()).toMatchSnapshot();
 });
