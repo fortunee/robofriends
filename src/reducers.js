@@ -5,11 +5,11 @@ import {
   REQUEST_ROBOTS_FAILED,
 } from './contants';
 
-const initialStateSearch = {
+export const initialStateSearch = {
   searchField: '',
 };
 
-const initialStateRobot = {
+export const initialStateRobot = {
   isPending: false,
   robots: [],
   error: '',
