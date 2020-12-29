@@ -1,10 +1,5 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class Header extends Component {
-  
-  render () {
-    return <h1 className="f1">Robo friends</h1>;
-  }
-}
+const Header = () => <h1 className="f1">Robo friends</h1>;
 
 export default Header;
