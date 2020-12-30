@@ -43,11 +43,11 @@ describe('requestRobots Action', () => {
 
   it('should handle robots pending request', () => {
     mockStore.dispatch(actions.requestRobots());
-    const [storeAction] = mockStore.getActions();
+    const [pendingReqAction] = mockStore.getActions();
     const expectedAction = {
       type: REQUEST_ROBOTS_PENDING,
     };
-    expect(storeAction).toEqual(expectedAction);
+    expect(pendingReqAction).toEqual(expectedAction);
   });
 
   it('should handle robots requests success', (done) => {
@@ -56,9 +56,22 @@ describe('requestRobots Action', () => {
       type: REQUEST_ROBOTS_SUCCESS,
       payload,
     };
+    
+    expect.assertions(1)
+    mockStore.dispatch(actions.requestRobots()).then(() => {
+      const [, successReqAction] = mockStore.getActions();
+      expect(successReqAction).toEqual(expectedAction);
+      done();
+    });
+  });
+
+  it('should handle failed robot requests', (done) => {
+    fetchMock.mock(URL, Promise.reject('Bad robot!'));
+    expect.assertions(2)
     mockStore.dispatch(actions.requestRobots()).then((a) => {
-      const [, successAction] = mockStore.getActions();
-      expect(successAction).toEqual(expectedAction);
+      const [, failedReqAction] = mockStore.getActions();
+      expect(failedReqAction.type).toEqual(REQUEST_ROBOTS_FAILED);
+      expect(failedReqAction.payload).toEqual('Bad robot!');
       done();
     });
   });
