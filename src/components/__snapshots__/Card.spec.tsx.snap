@@ -2,10 +2,14 @@
 
 exports[`Should render a Card component 1`] = `
 "<div className=\\"tc bg-light-blue dib br3 pa3 ma2 grow shadow-5\\">
-  <img src=\\"https://robohash.org/undefined?size=200x200\\" alt=\\"robots\\" />
+  <img src=\\"https://robohash.org/1?size=200x200\\" alt=\\"robots\\" />
   <div>
-    <h2 />
-    <p />
+    <h2>
+      Random Name
+    </h2>
+    <p>
+      rand@om.name
+    </p>
   </div>
 </div>"
 `;

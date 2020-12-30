@@ -1,6 +1,12 @@
 import React from 'react';
 
-const Card = ({ id, name, email }) => (
+interface CardProps {
+  id: number,
+  name: string,
+  email: string,
+}
+
+const Card = ({ id, name, email }: CardProps) => (
   <div className="tc bg-light-blue dib br3 pa3 ma2 grow shadow-5">
     <img src={`https://robohash.org/${id}?size=200x200`} alt="robots"/>
     <div>
