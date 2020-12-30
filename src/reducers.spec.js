@@ -44,7 +44,7 @@ describe('requestRobots Reducer', () => {
   });
 
   it('should handle REQUEST_ROBOTS_SUCCESS action', () => {
-    const expectUsers = [
+    const expectedRobots = [
       {
         id: 1,
         username: 'janedo',
@@ -56,11 +56,11 @@ describe('requestRobots Reducer', () => {
     expect(
       requestRobots(initialStateRobot, {
         type: REQUEST_ROBOTS_SUCCESS,
-        payload: expectUsers,
+        payload: expectedRobots,
       })
     ).toEqual({
       ...initialStateRobot,
-      robots: expectUsers,
+      robots: expectedRobots,
     });
   });
 
