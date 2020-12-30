@@ -18,14 +18,14 @@ describe('App', () => {
     useDispatchMock.mockReturnValue({
       robots: [],
       searchField: '',
-    })
+    });
     useSelectorMock.mockReturnValue({
       robots: [],
       searchField: '',
     });
     const component = render(<App />);
     expect(component).toMatchSnapshot();
-  })
+  });
 
   it('Should render loading component if request is pending', () => {
     useSelectorMock.mockReturnValue({
@@ -35,18 +35,20 @@ describe('App', () => {
 
     const component = render(<App />);
     expect(component.text()).toEqual('Loading...');
-  })
+  });
 
   it('Should call dispatch', () => {
     const dummyDispatch = jest.fn();
     useDispatchMock.mockReturnValue(dummyDispatch);
     useSelectorMock.mockReturnValue({
-      robots: [{
-        id: 1,
-        name: 'Jane',
-        username: 'jdoe',
-        email: 'jane@doe'
-      }],
+      robots: [
+        {
+          id: 1,
+          name: 'Jane',
+          username: 'jdoe',
+          email: 'jane@doe',
+        },
+      ],
       searchField: '',
       isPending: true,
     });
@@ -61,13 +63,15 @@ describe('App', () => {
     useDispatchMock.mockReturnValue(dummyDispatch);
     useSelectorMock.mockReturnValue({
       robots: [],
-      searchField: ''
+      searchField: '',
     });
 
     const component = mount(<App />);
-    const SearchBoxWrapper = component.find(SearchBox).find('input[type="search"]');
-    expect(SearchBoxWrapper.length).toEqual(1)
-    const mockedEvent = { target: { value: 'something'} };
+    const SearchBoxWrapper = component
+      .find(SearchBox)
+      .find('input[type="search"]');
+    expect(SearchBoxWrapper.length).toEqual(1);
+    const mockedEvent = { target: { value: 'something' } };
     SearchBoxWrapper.simulate('change', mockedEvent);
-  })
-})
+  });
+});
