@@ -56,8 +56,8 @@ describe('requestRobots Action', () => {
       type: REQUEST_ROBOTS_SUCCESS,
       payload,
     };
-    
-    expect.assertions(1)
+
+    expect.assertions(1);
     mockStore.dispatch(actions.requestRobots()).then(() => {
       const [, successReqAction] = mockStore.getActions();
       expect(successReqAction).toEqual(expectedAction);
@@ -67,7 +67,7 @@ describe('requestRobots Action', () => {
 
   it('should handle failed robot requests', (done) => {
     fetchMock.mock(URL, Promise.reject('Bad robot!'));
-    expect.assertions(2)
+    expect.assertions(2);
     mockStore.dispatch(actions.requestRobots()).then((a) => {
       const [, failedReqAction] = mockStore.getActions();
       expect(failedReqAction.type).toEqual(REQUEST_ROBOTS_FAILED);
