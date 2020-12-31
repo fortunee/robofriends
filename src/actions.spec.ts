@@ -8,7 +8,7 @@ import {
   REQUEST_ROBOTS_PENDING,
   REQUEST_ROBOTS_SUCCESS,
   REQUEST_ROBOTS_FAILED,
-} from './contants';
+} from './constants';
 
 import { setSearchField, requestRobots, RequestRobotsAction } from './actions';
 
