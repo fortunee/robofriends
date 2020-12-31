@@ -1,14 +1,20 @@
 import React, { Component } from 'react';
 
-class ErrorBoundary extends Component {
-  constructor() {
-    super();
+interface EBState {
+  hasError: boolean;
+}
+
+interface EBProps {}
+
+class ErrorBoundary extends Component<EBProps, EBState> {
+  constructor(props: EBProps) {
+    super(props);
     this.state = {
       hasError: false,
     };
   }
 
-  componentDidCatch(error, info) {
+  componentDidCatch() {
     this.setState({ hasError: true });
   }
 
