@@ -1,7 +1,11 @@
 import React from 'react';
-import Card from './Card';
+import Card, { CardProps } from './Card';
 
-const CardList = ({ robots }) => (
+interface CardListProps {
+  robots: Array<CardProps>
+}
+
+const CardList = ({ robots }: CardListProps) => (
   <>
     {robots.map((robot) => (
       <Card
