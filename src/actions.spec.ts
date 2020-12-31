@@ -8,11 +8,11 @@ import {
   REQUEST_ROBOTS_PENDING,
   REQUEST_ROBOTS_SUCCESS,
   REQUEST_ROBOTS_FAILED,
+  ROBOTS_URL,
 } from './constants';
 
 import { setSearchField, requestRobots, RequestRobotsAction } from './actions';
 
-const URL = 'https://jsonplaceholder.typicode.com/users';
 const initialState = {};
 type DispatchExts = ThunkDispatch<RequestRobotsAction, void, AnyAction>;
 type State = typeof initialState;
@@ -55,7 +55,7 @@ describe('requestRobots Action', () => {
   });
 
   it('should handle robots requests success', (done) => {
-    fetchMock.getOnce(URL, { body: payload });
+    fetchMock.getOnce(ROBOTS_URL, { body: payload });
     const expectedAction = {
       type: REQUEST_ROBOTS_SUCCESS,
       payload,
@@ -70,7 +70,7 @@ describe('requestRobots Action', () => {
   });
 
   it('should handle failed robot requests', (done) => {
-    fetchMock.mock(URL, Promise.reject('Bad robot!'));
+    fetchMock.mock(ROBOTS_URL, Promise.reject('Bad robot!'));
     expect.assertions(2);
     mockStore.dispatch(requestRobots()).then((a) => {
       const [, failedReqAction] = mockStore.getActions();
