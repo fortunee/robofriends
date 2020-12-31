@@ -15,10 +15,6 @@ describe('App', () => {
   });
 
   it('Should render App snapshot', () => {
-    useDispatchMock.mockReturnValue({
-      robots: [],
-      searchField: '',
-    });
     useSelectorMock.mockReturnValue({
       robots: [],
       searchField: '',
