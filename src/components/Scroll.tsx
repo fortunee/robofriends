@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Scroll = ({ children }) => (
+const Scroll: React.FC = ({ children }) => (
   <div style={{ overflowY: 'scroll', height: '80vh'}}>
     {children}
   </div>
