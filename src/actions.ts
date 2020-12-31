@@ -1,3 +1,5 @@
+import { AnyAction } from 'redux';
+import { ThunkDispatch } from 'redux-thunk';
 import { apiGetReq } from './api';
 import { RobotProps } from './containers/App';
 import {
@@ -7,18 +9,27 @@ import {
   REQUEST_ROBOTS_FAILED,
 } from './contants';
 
-interface Action {
-  type: string;
+interface SetSearchFieldAction {
+  type: typeof CHANGE_SEARCH_FIELD;
   payload?: string | Array<RobotProps>;
 }
-export const setSearchField = (text: string): Action => ({
+
+export const setSearchField = (text: string): SetSearchFieldAction => ({
   type: CHANGE_SEARCH_FIELD,
   payload: text,
 });
 
-type DispatchFunc = (p: Action) => void;
+export interface RequestRobotsAction {
+  type:
+    | typeof REQUEST_ROBOTS_PENDING
+    | typeof REQUEST_ROBOTS_SUCCESS
+    | typeof REQUEST_ROBOTS_FAILED;
+  payload?: string | Array<RobotProps>;
+}
 
-export const requestRobots = () => async (dispatch: DispatchFunc) => {
+export const requestRobots = () => async (
+  dispatch: ThunkDispatch<RequestRobotsAction, Promise<void>, AnyAction>
+) => {
   dispatch({ type: REQUEST_ROBOTS_PENDING });
   try {
     const data: Array<RobotProps> = await apiGetReq(
