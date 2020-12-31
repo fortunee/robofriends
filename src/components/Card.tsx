@@ -1,9 +1,10 @@
 import React from 'react';
 
-interface CardProps {
+export interface CardProps {
   id: number,
   name: string,
   email: string,
+  username?: string
 }
 
 const Card = ({ id, name, email }: CardProps) => (
