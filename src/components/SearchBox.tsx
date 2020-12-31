@@ -1,7 +1,7 @@
-import { memo, MemoExoticComponent } from 'react';
+import { ChangeEventHandler, memo, MemoExoticComponent } from 'react';
 
 interface SearchBoxProps {
-  searchChange: () => void;
+  searchChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 type MemoParam = (props: SearchBoxProps) => JSX.Element;
