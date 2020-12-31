@@ -20,13 +20,17 @@ export interface RobotProps {
   username?: string;
 }
 
-interface State {
-  searchRobots: { searchField: string };
-  requestRobots: {
-    robots: Array<RobotProps>;
-    isPending: boolean;
-    error: string;
-  };
+export interface RobotsState {
+  robots: Array<RobotProps>;
+  isPending: boolean;
+  error: string;
+}
+
+export interface SearchFieldState { searchField: string }
+
+export interface State {
+  searchRobots: SearchFieldState;
+  requestRobots: RobotsState;
 }
 
 const App = () => {

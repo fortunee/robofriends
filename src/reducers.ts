@@ -1,3 +1,5 @@
+import { RobotsState, SearchFieldState } from './containers/App';
+import { RequestRobotsAction, SetSearchFieldAction } from './actions';
 import {
   CHANGE_SEARCH_FIELD,
   REQUEST_ROBOTS_PENDING,
@@ -5,17 +7,24 @@ import {
   REQUEST_ROBOTS_FAILED,
 } from './contants';
 
-export const initialStateSearch = {
+export const initialStateSearch: SearchFieldState = {
   searchField: '',
 };
 
-export const initialStateRobot = {
+export const initialStateRobot: RobotsState = {
   isPending: false,
   robots: [],
   error: '',
 };
 
-export const searchRobots = (state = initialStateSearch, action = {}) => {
+interface ISearchRobot {
+  (a: SearchFieldState | undefined, b: SetSearchFieldAction): void;
+}
+
+export const searchRobots: ISearchRobot = (
+  state = initialStateSearch,
+  action
+) => {
   switch (action.type) {
     case CHANGE_SEARCH_FIELD:
       return Object.assign({}, state, { searchField: action.payload });
@@ -24,7 +33,14 @@ export const searchRobots = (state = initialStateSearch, action = {}) => {
   }
 };
 
-export const requestRobots = (state = initialStateRobot, action = {}) => {
+interface IRequestRobot {
+  (a: RobotsState | undefined, b: RequestRobotsAction): void;
+}
+
+export const requestRobots: IRequestRobot = (
+  state = initialStateRobot,
+  action
+) => {
   switch (action.type) {
     case REQUEST_ROBOTS_PENDING:
       return Object.assign({}, state, { isPending: true });

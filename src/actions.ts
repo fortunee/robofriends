@@ -9,9 +9,9 @@ import {
   REQUEST_ROBOTS_FAILED,
 } from './contants';
 
-interface SetSearchFieldAction {
-  type: typeof CHANGE_SEARCH_FIELD;
-  payload?: string | Array<RobotProps>;
+export interface SetSearchFieldAction {
+  type: string;
+  payload?: string;
 }
 
 export const setSearchField = (text: string): SetSearchFieldAction => ({

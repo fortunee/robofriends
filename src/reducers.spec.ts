@@ -11,10 +11,13 @@ import {
   searchRobots,
   initialStateSearch,
 } from './reducers';
+import { RequestRobotsAction, SetSearchFieldAction } from './actions';
 
 describe('searchRobots Reducer', () => {
   it('should return initial state', () => {
-    expect(searchRobots(undefined, undefined)).toEqual(initialStateSearch);
+    const state = undefined;
+    const action = {} as SetSearchFieldAction;
+    expect(searchRobots(state, action)).toEqual(initialStateSearch);
   });
 
   it('should handle CHANGE_SEARCH_FIELD action', () => {
@@ -29,7 +32,9 @@ describe('searchRobots Reducer', () => {
 
 describe('requestRobots Reducer', () => {
   it('should return initial state', () => {
-    expect(requestRobots(undefined, undefined)).toEqual(initialStateRobot);
+    const state = undefined;
+    const action = {} as RequestRobotsAction;
+    expect(requestRobots(state, action)).toEqual(initialStateRobot);
   });
 
   it('should handle REQUEST_ROBOTS_PENDING action', () => {
