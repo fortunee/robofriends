@@ -18,8 +18,6 @@ const store = createStore(
   applyMiddleware(thunkMiddleware)
 );
 
-console.log(typeof store.getState())
-
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
