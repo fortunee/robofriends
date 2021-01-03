@@ -11,8 +11,6 @@ import {
 
 import { requestRobots, setSearchField } from '../actions';
 
-import './App.css';
-
 export interface RobotProps {
   id: number;
   name: string;
