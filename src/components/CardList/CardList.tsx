@@ -1,6 +1,6 @@
 import React from 'react';
 import { RobotProps } from '../../containers/App';
-import Card from '../Card/Card';
+import Card from '../Card';
 
 interface CardListProps {
   robots: Array<RobotProps>
