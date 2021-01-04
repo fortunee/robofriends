@@ -1,5 +1,5 @@
 import React from 'react';
-import { RobotProps } from '../containers/App';
+import { RobotProps } from '../../containers/App';
 
 const Card = ({ id, name, email }: RobotProps) => (
   <div className="tc bg-light-blue dib br3 pa3 ma2 grow shadow-5">

@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should render a Loading component 1`] = `
+"<div className=\\"vh-100 dt w-100\\">
+  <h1 className=\\"tc f1 dtc v-mid\\">
+    Loading...
+  </h1>
+</div>"
+`;
