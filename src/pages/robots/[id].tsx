@@ -21,7 +21,7 @@ const Robot = () => {
   if (!state) {
     return <Loading />
   }
-  console.log(state)
+
   return <Card {...state} />
 };
 
