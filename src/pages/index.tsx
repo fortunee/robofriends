@@ -1,10 +1,11 @@
+import { NextPage } from 'next';
 import React, { ChangeEvent } from 'react';
 import { useDispatch } from 'react-redux';
 import { setSearchField } from '../actions';
 import { Header, SearchBox, Scroll } from '../components';
 import Robots from './robots';
 
-const Home = () => {
+const Home: NextPage = () => {
   const dispatch = useDispatch();
 
   const onSearchChange = (e: ChangeEvent<HTMLInputElement>) =>
