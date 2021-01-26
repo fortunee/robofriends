@@ -1,39 +1,25 @@
 version: 2.1
 jobs:
-  build1:
+  build:
     docker:
-      - image: alpine:3.7
+      - image: circleci/node:12
     steps:
       - checkout
       - run:
-          name: The First Step
+          name: Installing yarn pkg mgr
           command: |
-            echo 'Hello World!'
-            echo 'This is the delivery pipeline'
+            npm install yarn
       - run:
-          name: Code Has Arrived
+          name: Installing npm packages
           command: |
-            ls -al
-            echo '^^^That should look familiar^^^'
-  build2:
-    docker:
-      - image: alpine:3.7
-    steps:
-      - checkout
+            yarn install
       - run:
-          name: The Second Step
+          name: Build running
           command: |
-            echo 'Hello World! (2)'
-            echo 'This is the delivery pipeline (2)'
-      - run:
-          name: Code Has Arrived (2)
-          command: |
-            ls -al
-            echo '^^^That should look familiar (2)^^^'
+            CI=true yarn build
 
 workflows:
   version: 2.1
   all_builds:
     jobs:
-      - build1
-      - build2
+      - build
