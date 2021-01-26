@@ -1,0 +1,39 @@
+version: 2.1
+jobs:
+  build1:
+    docker:
+      - image: alpine:3.7
+    steps:
+      - checkout
+      - run:
+          name: The First Step
+          command: |
+            echo 'Hello World!'
+            echo 'This is the delivery pipeline'
+      - run:
+          name: Code Has Arrived
+          command: |
+            ls -al
+            echo '^^^That should look familiar^^^'
+  build2:
+    docker:
+      - image: alpine:3.7
+    steps:
+      - checkout
+      - run:
+          name: The Second Step
+          command: |
+            echo 'Hello World! (2)'
+            echo 'This is the delivery pipeline (2)'
+      - run:
+          name: Code Has Arrived (2)
+          command: |
+            ls -al
+            echo '^^^That should look familiar (2)^^^'
+
+workflows:
+  version: 2.1
+  all_builds:
+    jobs:
+      - build1
+      - build2
