@@ -28,7 +28,8 @@
     "deploy": "gh-pages -d build",
     "dev": "next dev",
     "next:build": "next build",
-    "next:start": "next start"
+    "next:start": "next start",
+    "pre-commit": "pretty-quick --staged"
   },
   "eslintConfig": {
     "extends": [
