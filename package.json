@@ -28,14 +28,18 @@
     "deploy": "gh-pages -d build",
     "dev": "next dev",
     "next:build": "next build",
-    "next:start": "next start",
-    "pre-commit": "pretty-quick --staged"
+    "next:start": "next start"
   },
   "eslintConfig": {
     "extends": [
       "react-app",
       "react-app/jest"
     ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
   },
   "browserslist": {
     "production": [
