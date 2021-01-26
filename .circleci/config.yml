@@ -17,9 +17,23 @@ jobs:
           name: Build running
           command: |
             CI=true yarn build
+  test:
+    docker:
+      - image: circleci/node:12
+    steps:
+      - checkout
+      - run:
+          name: Test Run Setup
+          command: |
+            yarn install
+      - run:
+          name: Running tests
+          command: |
+            yarn test
 
 workflows:
   version: 2.1
   all_builds:
     jobs:
       - build
+      - test
