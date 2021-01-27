@@ -28,7 +28,9 @@
     "deploy": "gh-pages -d build",
     "dev": "next dev",
     "next:build": "next build",
-    "next:start": "next start"
+    "next:start": "next start",
+    "lint": "tslint-config-prettier-check ./tslint.json",
+    "lint:fix": "tslint -c tslint.json 'src/**/*.{ts, tsx}' --fix --format verbose"
   },
   "eslintConfig": {
     "extends": [
