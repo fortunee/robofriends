@@ -7,7 +7,7 @@ import {
   REQUEST_ROBOTS_PENDING,
   REQUEST_ROBOTS_SUCCESS,
   REQUEST_ROBOTS_FAILED,
-  ROBOTS_URL
+  ROBOTS_URL,
 } from './constants';
 
 export interface SetSearchFieldAction {
@@ -25,7 +25,7 @@ export interface RequestRobotsAction {
     | typeof REQUEST_ROBOTS_PENDING
     | typeof REQUEST_ROBOTS_SUCCESS
     | typeof REQUEST_ROBOTS_FAILED;
-  payload?: string | Array<RobotProps>;
+  payload?: string | RobotProps[];
 }
 
 export const requestRobots = () => async (
@@ -33,7 +33,7 @@ export const requestRobots = () => async (
 ) => {
   dispatch({ type: REQUEST_ROBOTS_PENDING });
   try {
-    const data: Array<RobotProps> = await apiGetReq(ROBOTS_URL);
+    const data: RobotProps[] = await apiGetReq(ROBOTS_URL);
     dispatch({ type: REQUEST_ROBOTS_SUCCESS, payload: data });
   } catch (error) {
     dispatch({ type: REQUEST_ROBOTS_FAILED, payload: error });

@@ -17,9 +17,10 @@ export const initialStateRobot: RobotsState = {
   error: '',
 };
 
-interface ISearchRobot {
-  (a: SearchFieldState | undefined, b: SetSearchFieldAction): void;
-}
+type ISearchRobot = (
+  a: SearchFieldState | undefined,
+  b: SetSearchFieldAction
+) => void;
 
 export const searchRobots: ISearchRobot = (
   state = initialStateSearch,
@@ -33,9 +34,10 @@ export const searchRobots: ISearchRobot = (
   }
 };
 
-interface IRequestRobot {
-  (a: RobotsState | undefined, b: RequestRobotsAction): void;
-}
+type IRequestRobot = (
+  a: RobotsState | undefined,
+  b: RequestRobotsAction
+) => void;
 
 export const requestRobots: IRequestRobot = (
   state = initialStateRobot,
