@@ -6,10 +6,6 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Installing yarn pkg mgr
-          command: |
-            npm install yarn
-      - run:
           name: Installing npm packages
           command: |
             yarn install
